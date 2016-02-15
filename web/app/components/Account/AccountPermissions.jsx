@@ -18,6 +18,10 @@ import Tabs, {Tab} from "../Utility/Tabs";
 import HelpContent from "../Utility/HelpContent";
 import RecentTransactions from "./RecentTransactions";
 
+import PeermitSettings from "./PeermitSettings";
+import PeermitStore from "stores/PeermitStore";
+import AltContainer from "alt-container";
+
 let wallet_api = new WalletApi()
 
 class AccountPermissions extends React.Component {
@@ -175,6 +179,12 @@ class AccountPermissions extends React.Component {
         this.setState(state);
     }
 
+    onThresholdChangedTo(var_name, value) {
+        let state = {};
+        state[var_name] = value;
+        this.setState(state);
+    }
+
     validateAccount(collection, account) {
         return null;
     }
@@ -280,6 +290,25 @@ class AccountPermissions extends React.Component {
                             tabIndex={7}
                         />
 
+                    </Tab>
+
+                    <Tab title="2FA">
+                       <AltContainer store={PeermitStore}>
+                          <PeermitSettings
+                             label="Foobar"
+                             accountName={this.props.account.get('name')}
+                             /* Active Stuff */
+                             accounts={active_accounts}
+                             keys={active_keys}
+                             addresses={active_addresses}
+                             weights={active_weights}
+                             onAddItem={this.onAddItem.bind(this, "active")}
+                             onRemoveItem={this.onRemoveItem.bind(this, "active")}
+                             onChangeThreshold={this.onThresholdChangedTo.bind(this, "active_threshold")}
+                             /* Owner Stuff */
+                             owner_keys={owner_keys}
+                             />
+                       </AltContainer>
                     </Tab>
                 </Tabs>
                 

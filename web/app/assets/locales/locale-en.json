@@ -187,7 +187,18 @@
       "private": "Private key (WIF - Wallet Import Format)",
       "show": "show",
       "brain": "Brainkey position",
-      "from": "Imported from account"
+      "from": "Imported from account",
+      "secure_account": {
+          "reference_account": "Reference Account",
+          "secure_enable": "Enable Second Factor Authentication for this account",
+          "register_btn": "Register/Update",
+          "terms": "Accept Terms and Conditions",
+          "no_settings": "No settings found by Peermit",
+          "require_unlock": "Need to unlock your wallet to read or modify your account-specific settings!",
+          "settings": {
+              "mail": "E-Mail Address*"
+          }
+      }
     },
     "votes": {
       "proxy_short": "Proxy",
